@@ -32,7 +32,10 @@ export default function Projects() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         {projects.map((project) => {
           return (
-            <div className="w-full p-4 bg-terang-primary dark:bg-gelap-primary flex flex-col rounded-lg text-terang-primary shadow-lg">
+            <div
+              key={project.id}
+              className="w-full p-4 bg-terang-primary dark:bg-gelap-primary flex flex-col rounded-lg text-terang-primary shadow-lg"
+            >
               <p className="text-gelap-primary capitalize dark:text-terang-primary font-semibold pb-2">
                 {project.title}
               </p>
@@ -46,9 +49,12 @@ export default function Projects() {
                 odit.
               </p>
               <div className="flex flex-row flex-wrap justify-start ">
-                {project.tags.map((tag) => {
+                {project.tags.map((tag, index) => {
                   return (
-                    <div className="py-1 px-4 text-gelap-primary dark:text-terang-primary bg-terang-secondary dark:bg-gelap-secondary rounded-md mt-2 mr-2">
+                    <div
+                      key={index}
+                      className="py-1 px-4 text-gelap-primary dark:text-terang-primary bg-terang-secondary dark:bg-gelap-secondary rounded-md mt-2 mr-2"
+                    >
                       {tag}
                     </div>
                   );
