@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import contentful from "./api/contentful";
+import { getBlogs } from "./api/getBlogs";
 import { Header, Hero, Projects, Blogs, TechStack } from "./components";
 function App() {
   const [status, setStatus] = useState("idle");
+  const [errors, setErrors] = useState([]);
   const [data, setData] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     setStatus("process");
     contentful
       .getEntries({
         content_type: "project",
-        order: "-sys.createdAt",
+        order: "sys.createdAt",
       })
       .then((res) => {
         setStatus("success");
@@ -22,18 +25,25 @@ function App() {
           return { ...item.fields, image, description, id };
         });
         setData(format);
-        console.log(process.env.REACT_APP_CONTENTFUL_API_KEY);
       })
       .catch((err) => {
-        console.log(`error ${err.message}`);
+        setErrors((errors) => [...errors, err.message]);
       });
-  }, []);
+
+    // fetch blog
+    getBlogs()
+      .then((res) => {
+        setStatus("success");
+        setBlogs(res.items);
+      })
+      .catch((e) => setErrors((e) => [...errors, e.message]));
+  }, [errors]);
   return (
     <div className="bg-terang-secondary dark:bg-gelap-secondary min-h-screen">
       <Header />
       <Hero />
-      <Projects />
-      <Blogs />
+      <Projects projects={status === "success" ? data : []} />
+      <Blogs blogs={status === "success" ? blogs : []} />
       <TechStack />
     </div>
   );

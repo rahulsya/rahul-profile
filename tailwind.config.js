@@ -3,7 +3,7 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ["Raleway"],
+      sans: ["Poppins"],
     },
     extend: {
       colors: {
@@ -17,6 +17,9 @@ module.exports = {
           secondary: "#F2F2F2",
           third: "#E0E0E0",
         },
+      },
+      animation: {
+        bounce: "bounce 0.5s infinite",
       },
     },
     variants: {
