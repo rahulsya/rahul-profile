@@ -28,6 +28,9 @@ function Hero() {
         >
           * github/rahulsya
         </a>
+        <a href="#" rel="noreferrer">
+          / rahulsyaban@gmail.com
+        </a>
       </div>
     </div>
   );
