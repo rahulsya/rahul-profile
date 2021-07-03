@@ -12,7 +12,7 @@ function App() {
     contentful
       .getEntries({
         content_type: "project",
-        order: "sys.createdAt",
+        order: "-sys.createdAt",
       })
       .then((res) => {
         setStatus("success");
