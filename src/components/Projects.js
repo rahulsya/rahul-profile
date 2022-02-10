@@ -21,7 +21,7 @@ export default function Projects({ projects }) {
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="h-40 w-full object-cover rounded-md"
+                  className="h-40 lg:h-64 w-full object-cover rounded-md"
                 />
               </a>
               <p className="mt-2 text-gelap-primary dark:text-terang-primary py-2">
