@@ -12,9 +12,14 @@ export default function Blogs({ blogs }) {
               href={blog.link}
               target="_blank"
               rel="noreferrer"
-              className="py-4 px-4 shadow-lg rounded-md bg-terang-primary dark:bg-gelap-primary mt-4"
+              className="flex flex-row justify-between items-center text-sm lg:text-lg py-4 px-4 shadow-lg rounded-md bg-terang-primary dark:bg-gelap-primary mt-4"
             >
               {blog.title}
+              {index === 0 && (
+                <div className="text-gray-100 animate-pulse py-2 px-2 rounded-md bg-blue-500">
+                  New Post
+                </div>
+              )}
             </a>
           );
         })}
