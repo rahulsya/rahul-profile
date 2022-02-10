@@ -39,7 +39,7 @@ function App() {
       .catch((e) => setErrors((e) => [...errors, e.message]));
   }, [errors]);
   return (
-    <div className="bg-terang-secondary dark:bg-gelap-secondary min-h-screen">
+    <div className="bg-terang-secondary dark:bg-gelap-secondary min-h-screen w-full">
       <Header />
       <Hero />
       <Projects projects={status === "success" ? data : []} />
